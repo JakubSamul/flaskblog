@@ -2,8 +2,7 @@ from flask_login import current_user
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed, FileField
 from wtforms import BooleanField, PasswordField, StringField, SubmitField
-from wtforms.validators import (DataRequired, Email, EqualTo, Length,
-                                ValidationError)
+from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
 from flaskblog.models import User
 
@@ -12,6 +11,7 @@ class RegistrationForm(FlaskForm):
     username = StringField(
         "Username", validators=[DataRequired(), Length(min=2, max=20)]
     )
+
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
     confirm_password = PasswordField(
